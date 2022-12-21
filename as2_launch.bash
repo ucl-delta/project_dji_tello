@@ -45,5 +45,5 @@ new_window 'viewer' "gnome-terminal -x bash -c '\
     ros2 run as2_alphanumeric_viewer as2_alphanumeric_viewer_node --ros-args -r  __ns:=/$drone_namespace'"
 
 
-tmux attach-session -t $drone_namespace
+tmux attach-session -t $drone_namespace:0
 
