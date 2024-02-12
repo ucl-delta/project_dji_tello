@@ -1,14 +1,7 @@
-# project_copilot
+# Project DJI Tello
 
-## Ignition
-```
-./launch_ignition.bash {config.json}
-```
+## Launch
 
-```
-./main_launcher.bash
-```
-
-```
-./flightmare_launch.bash {params.yaml}
+```bash
+./launch_as2.bash
 ```
