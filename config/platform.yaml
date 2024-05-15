@@ -3,3 +3,9 @@
     cmd_freq: 100.0  # Hz of platform commands send
     info_freq: 10.0  # Hz of platform info publish
     sensor_freq: 10.0  # Hz of platform sensor publish
+    tello_internal_state_update_freq: 10.0 # Hz of tello internal state update
+    command_ip: "192.168.1.40"
+    command_port: 8889
+    state_ip: "0.0.0.0"
+    state_port: 8890
+    

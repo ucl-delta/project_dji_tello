@@ -16,12 +16,15 @@ def drone_run(drone_interface: DroneInterface):
 
     sleep_time = 2.0
 
-    dim = 1.0
+    dim = 0.5
+    # path = [
+    #     [-dim, dim, height],
+    #     [-dim, -dim, height],
+    #     [dim, -dim, height],
+    #     [dim, dim, height]
+    # ]
     path = [
-        [-dim, dim, height],
-        [-dim, -dim, height],
-        [dim, -dim, height],
-        [dim, dim, height]
+        [dim, 0, height]
     ]
     print("Start mission")
 
@@ -37,6 +40,7 @@ def drone_run(drone_interface: DroneInterface):
     print("Take Off")
     drone_interface.takeoff(takeoff_height, speed=1.0)
     print("Take Off done")
+    sleep(sleep_time)
     sleep(sleep_time)
 
     ##### GO TO #####

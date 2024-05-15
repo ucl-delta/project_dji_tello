@@ -45,13 +45,13 @@ echo "Background processes started ${drone}..."
 wait
 
 if [[ ${record_rosbag} == "true" ]]; then
-    tmuxinator start -p tmuxinator/rosbag.yaml \
+    tmuxinator start -n rosbag -p tmuxinator/rosbag.yaml \
         drones=${drone} &
     wait
 fi
 
 if [[ ${launch_keyboard_teleop} == "true" ]]; then
-    tmuxinator start -p tmuxinator/keyboard_teleop.yaml \
+    tmuxinator start -n keyboard_teleop -p tmuxinator/keyboard_teleop.yaml \
         drone_namespace=${drone} &
     wait
 fi
