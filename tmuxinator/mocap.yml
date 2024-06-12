@@ -1,0 +1,10 @@
+attach: true
+root: ./
+startup_window: mocap
+windows:
+  - mocap:
+      layout:
+      panes:
+        - ros2 launch mocap4r2_optitrack_driver optitrack2.launch.py
+            namespace:=optitrack
+            config_file:=config/mocap4r2.yaml

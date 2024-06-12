@@ -3,9 +3,16 @@
 <%
 # Input parameters
 drone_namespace     = @settings["drone_namespace"]
+estimator_plugin    = @settings["estimator_plugin"]
 
 # Other parameters
 behavior_type       = "position"
+
+if estimator_plugin == "mocap_pose"
+    state_estimator_config_file = "config/state_estimator_mocap.yaml"
+else
+    state_estimator_config_file = "config/state_estimator.yaml"
+end
 
 %>
 attach: false
@@ -30,8 +37,8 @@ windows:
         - ros2 launch as2_state_estimator state_estimator_launch.py
             namespace:=<%= drone_namespace %>
             use_sim_time:=false
-            plugin_name:=raw_odometry
-            plugin_config_file:=config/state_estimator.yaml
+            plugin_name:=<%= estimator_plugin %>
+            plugin_config_file:=<%= state_estimator_config_file %>
   - controller:
       layout:
       panes:
