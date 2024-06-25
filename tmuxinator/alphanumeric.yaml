@@ -1,0 +1,20 @@
+# ~/.tmuxinator/project_crazyflie_basic.yml
+
+<%
+# Input parameters
+drone_namespaces     = @settings["drone_namespaces"]
+ns = drone_namespaces.split(",")
+
+%>
+attach: false
+root: ./
+startup_window: alphanumeric_viewer
+windows:
+  - alphanumeric_viewer:
+      layout: tiled
+      panes:
+        <%- ns.each do |drone_namespace| %>
+        - ros2 run as2_alphanumeric_viewer as2_alphanumeric_viewer_node
+            --ros-args -r  __ns:=/<%= drone_namespace %>
+        <%- end %>
+  

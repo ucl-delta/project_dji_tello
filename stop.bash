@@ -2,15 +2,20 @@
 
 # Set default input element
 if [ $# -eq 0 ]; then
-  set -- "tello"
+  set -- "all"
 fi
 
 # Make a tmux list of sessions to be killed
-tmux_session_list=("keyboard_teleop" "rosbag", "mocap", "tello1")
+tmux_session_list=() #("keyboard_teleop" "rosbag" "mocap")
 
 # For each drone namespace, add to the list
 for ns in "$@"; do
-  tmux_session_list+=("$ns")
+  if [[ ${ns} == "all" ]]; then
+    tmux_session_list=($(tmux list-sessions -F '#S'))
+    break
+  else 
+    tmux_session_list+=("$ns")
+  fi
 done
 
 # If inside tmux session, get the current session name
@@ -37,10 +42,12 @@ done
 for session in "${tmux_session_list[@]}"; do
   if [[ "$session" != "$current_session" ]]; then
     tmux kill-session -t "$session" 2>/dev/null
+    echo "Stopping $session"
   fi
 done
 
 # Kill the current tmux session, if in a tmux session
 if [[ -n "$TMUX" ]]; then
   tmux kill-session -t "$current_session" 2>/dev/null
+  echo "Stopping $current_session"
 fi

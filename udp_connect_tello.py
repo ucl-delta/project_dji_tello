@@ -41,7 +41,8 @@ import argparse
 
 parser = argparse.ArgumentParser(description="IP and Port Parser")
 parser.add_argument("--ip", help="IP address", default="192.168.10.1")
-parser.add_argument("--port", help="Port number", default=8889)
+parser.add_argument("--port", help="Port number", default=8889, type=int)
+parser.add_argument("--send_port", help="Port Number to send from", default=30000, type=int)
 parser.add_argument("--receive_ip", help="IP address", default="0.0.0.0")
 parser.add_argument("--receive_port", help="Port number", default=8890)
 
@@ -50,6 +51,7 @@ args = parser.parse_args()
 # Create a TCP/IP socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 # Connect the socket to the port where the server is listening
+sock.bind(("", args.send_port))
 server_address = (args.ip, args.port)
 
 while True:

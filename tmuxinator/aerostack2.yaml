@@ -9,28 +9,28 @@ estimator_plugin    = @settings["estimator_plugin"]
 behavior_type       = "position"
 
 if estimator_plugin == "mocap_pose"
-    state_estimator_config_file = "config/state_estimator_mocap.yaml"
+    state_estimator_config_file = "config/#{drone_namespace}/state_estimator_mocap.yaml"
 else
-    state_estimator_config_file = "config/state_estimator.yaml"
+    state_estimator_config_file = "config/#{drone_namespace}/state_estimator.yaml"
 end
 
 %>
 attach: false
 root: ./
-startup_window: alphanumeric_viewer
+startup_window: platform
 windows:
-  - alphanumeric_viewer:
-      layout: tiled
-      panes:
-        - ros2 run as2_alphanumeric_viewer as2_alphanumeric_viewer_node
-            --ros-args -r  __ns:=/<%= drone_namespace %>
+#   - alphanumeric_viewer:
+#       layout: tiled
+#       panes:
+#         - ros2 run as2_alphanumeric_viewer as2_alphanumeric_viewer_node
+#             --ros-args -r  __ns:=/<%= drone_namespace %>
   - platform:
       layout: tiled
       panes:
         - ros2 launch as2_platform_tello tello_platform.launch.py
             namespace:=<%= drone_namespace %>
             use_sim_time:=false
-            platform_config_file:=config/platform.yaml
+            config_file:=config/<%= drone_namespace %>/platform.yaml
   - state_estimator:
       layout:
       panes:
