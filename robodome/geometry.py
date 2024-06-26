@@ -65,7 +65,8 @@ class TieredGeometry(object):
         # Insert in height order to ensure self.tiers is sorted by height
         bisect.insort(self.tiers, tier, key=lambda x: x.height)
     
-    def get_tiered_points(self, points_per_level:int) -> np.ndarray[np.float32]:
+    def get_tiered_points(self, points_per_level:int, separate_per_tier=False) -> np.ndarray[np.float32]:
+        # If separate per tier, return a list of lists of points for each tier, otherwise return as one list
         points = []
         for tier in self.tiers:
             angles = np.linspace(0, 2* np.pi, points_per_level, endpoint=False)
@@ -73,8 +74,13 @@ class TieredGeometry(object):
             ys = tier.radius * np.sin(angles)
             zs = np.array([tier.height for _ in range(points_per_level)])
             trans_points = [self.__transform_point(np.array([x, y, z])) for x, y, z in zip(xs, ys, zs) ]
-            points.extend(trans_points)
+            if separate_per_tier:
+                points.append(trans_points)
+            else:
+                points.extend(trans_points)
 
+        if separate_per_tier:
+            return points
         return np.array(points)
 
     def get_points(self, num_levels:int, points_per_level:int, interp_method="linear") -> np.ndarray[np.float32]:
