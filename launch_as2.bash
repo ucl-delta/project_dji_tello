@@ -80,7 +80,7 @@ if [[ ${record_rosbag} == "true" ]]; then
     wait
 fi
 
-if [[ ${foxglove} == "true" ]]; then
+if [[ ${foxglove_bridge} == "true" ]]; then
     tmuxinator start -n foxglove -p tmuxinator/foxglove.yaml &
     wait
 fi
