@@ -1,6 +1,7 @@
 <%
 # Input parameters
 drone_namespace = @settings["drone_namespace"]
+use_sim_time = @settings["use_sim_time"]
 %>
 
 attach: true
@@ -12,4 +13,4 @@ windows:
       panes:
         - ros2 launch as2_keyboard_teleoperation as2_keyboard_teleoperation_launch.py
             namespace:=<%= drone_namespace %>
-            use_sim_time:=false
+            use_sim_time:=<%= use_sim_time %>

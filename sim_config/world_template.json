@@ -1,0 +1,42 @@
+{
+    "world_name": "empty",
+    "drones": [
+        {
+            "model_type": "quadrotor_base",
+            "model_name": "tello1",
+            "xyz": [
+                0.0,
+                0.0,
+                0.3
+            ],
+            "rpy": [
+                0,
+                0,
+                -1.57
+            ],
+            "payload": [
+                {
+                    "model_name": "hd_camera",
+                    "model_type": "hd_camera"
+                }
+            ],
+            "flight_time": 60
+        }
+    ],
+    "objects": [
+        {
+            "model_type": "windmill",
+            "model_name": "obj0",
+            "xyz": [
+                0.0, 
+                -3.0,
+                0.0
+            ],
+            "rpy": [
+                0.0, 
+                0.0, 
+                3.14
+            ]
+        }
+    ]
+}
