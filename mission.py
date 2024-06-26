@@ -77,7 +77,7 @@ def main():
 
     parser = argparse.ArgumentParser(
         description="Manually fly tello around")
-    parser.add_argument('namespace', type=str)
+    parser.add_argument('namespace', type=str, default="tello1")
 
     args = parser.parse_args()
 

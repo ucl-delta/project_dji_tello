@@ -1,2 +1,4 @@
 .vscode
 rosbags/
+
+sim_config/world.json
