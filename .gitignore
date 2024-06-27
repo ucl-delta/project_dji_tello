@@ -3,4 +3,4 @@ rosbags/
 
 sim_config/world.json
 
-__pycacge__/*
+*/__pycache__/*

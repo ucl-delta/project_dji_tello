@@ -106,12 +106,12 @@ class SwarmConductor:
 
 
         # Allocate paths
-        center = [0.0, -3.0]
-        height = 2.0
+        center = [1.0, -1.0]
+        height = 1.0
 
-        radius = 150 # cm
+        radius = 100 # cm
         radius_change = 50
-        distance_between_tiers = 100 #cm
+        distance_between_tiers = 75 #cm
 
         hb = GeometryBuilder()
         for i, _ in enumerate(drones_ns):

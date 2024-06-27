@@ -4,7 +4,7 @@
 # Input parameters
 drone_namespace     = @settings["drone_namespace"]
 estimator_plugin    = @settings["estimator_plugin"]
-simulation          = @settings["simulation"]
+simulation          = @settings["simulation"] == "true"
 simulation_config   = @settings["simulation_config"]
 
 # Other parameters
